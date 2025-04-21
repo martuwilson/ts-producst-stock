@@ -1,5 +1,5 @@
-import {Table, Column, Model, DataType, Default, PrimaryKey, Unique} from 'sequelize-typescript';
-import {v4 as uuidv4} from 'uuid';
+import {Table, Column, Model, DataType, Default, PrimaryKey, Unique, AllowNull} from 'sequelize-typescript';
+import {v4 as uuidv4, validate} from 'uuid';
 // Decorator to define the Product model
 @Table({
     tableName: 'products',
@@ -17,13 +17,25 @@ class Product extends Model {
     })
     declare id: string;
 
+    @AllowNull(false)
     @Column({
-        type: DataType.STRING(100)
+        type: DataType.STRING(100),
+        validate: {
+            notEmpty:{
+                msg: "Name cannot be empty",
+            }
+        },
     })
     name: string;
 
+    @AllowNull(false)
     @Column({
         type: DataType.FLOAT,
+        validate: {
+            notEmpty:{
+                msg: "Price cannot be empty",
+            }
+        },
     })
     price: number;
 

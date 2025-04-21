@@ -1,23 +1,19 @@
-import {Request, Response} from 'express';
-import Product from '../models/Product.model';
+import { Request, Response } from "express";
 
-export const createProduct = async (req : Request, res : Response) => {
+import Product from "../models/Product.model";
 
-    const {name, price, availability} = req.body;
+const createProduct = async (req: Request, res: Response) => {
 
-    try {
-        const product = await Product.create({
-            name,
-            price,
-            availability
-        });
+  const { name, price, availability } = req.body;
 
-        res.status(201).json({
-            message: "Product created successfully",
-            product
-        });
-    } catch (error) {
-        console.error("Error creating product:", error);
-        res.status(500).json({error: "Internal server error"});
-    }
-} 
+  try {
+    const product = await Product.create({ name, price, availability });
+    res.status(201).json({ message: "Product created", product });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+
+export { createProduct };
