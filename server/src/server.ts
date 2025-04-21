@@ -4,6 +4,10 @@ import db from "./config/db";
 import colors from "colors";
 const server = express();
 
+// Read data from the request body
+server.use(express.json());
+server.use(express.urlencoded({ extended: true }));
+
 //Connect to the database
 async function connectToDatabase() {
     try {

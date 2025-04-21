@@ -1,4 +1,5 @@
 import {Router} from "express";
+import { createProduct } from "./handlers/product";
 
 const router = Router();
 // Define your routes here
@@ -8,9 +9,7 @@ router.get("/", (req, res) => {
     res.send("GET request to the homepage");
 });
 
-router.post("/", (req, res) => {
-    res.send("POST request to the homepage");
-});
+router.post("/", createProduct);
 
 router.put("/", (req, res) => {
     res.send("PUT request to the homepage");
