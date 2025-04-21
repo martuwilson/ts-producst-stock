@@ -26,7 +26,7 @@ class Product extends Model {
             }
         },
     })
-    name: string;
+    declare name: string;
 
     @AllowNull(false)
     @Column({
@@ -37,13 +37,13 @@ class Product extends Model {
             }
         },
     })
-    price: number;
+    declare price: number;
 
     @Default(true)
     @Column({
         type: DataType.BOOLEAN,
     })
-    availability: boolean;
+    declare availability: boolean;
 }
 
 export default Product;
