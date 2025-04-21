@@ -1,29 +1,9 @@
 import express from "express";
+import productsRouter from "./router";
 
 const server = express();
 
 // Routing
-server.get("/", (req, res) => {
-
-    const data = [
-        {
-            id: 1,
-            name: "John Doe",
-            age: 30
-        },
-        {
-            id: 2,
-            name: "Jane Smith",
-            age: 25
-        },
-        {
-            id: 3,
-            name: "Alice Johnson",
-            age: 28
-        }
-    ]
-
-    res.send(data);
-});
+server.use('/api/products', productsRouter);
 
 export default server;
