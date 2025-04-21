@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getProducts, getProductById, createProduct } from "./handlers/product";
+import { getProducts, getProductById, createProduct,editProduct, deleteProduct } from "./handlers/product";
 import { body } from "express-validator";
 import { handleInputError, validateProductId } from "./middlewares";
 
@@ -15,5 +15,7 @@ router.post("/",
     handleInputError,
     createProduct);
 
+router.put("/:id",validateProductId, editProduct);
+router.delete("/:id",validateProductId, deleteProduct);
 
 export default router;

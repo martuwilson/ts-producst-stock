@@ -46,3 +46,31 @@ export const createProduct = async (req: Request, res: Response) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
+export const editProduct = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const { name, price, availability } = req.body;
+
+    try {
+        const product = await Product.findByPk(id);
+        
+        await product.update({ name, price, availability });
+        res.status(200).json({ message: "Product updated", product });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+}
+
+export const deleteProduct = async (req: Request, res: Response) => {
+    const { id } = req.params;
+
+    try {
+        const product = await Product.findByPk(id);
+        await product.destroy();
+        res.status(200).json({ message: "Product deleted" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+}
