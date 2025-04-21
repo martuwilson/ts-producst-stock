@@ -15,7 +15,6 @@ async function connectToDatabase() {
         console.log(colors.bgRed("Database connection failed"));
     }
 }
-
 connectToDatabase();
 
 // Routing

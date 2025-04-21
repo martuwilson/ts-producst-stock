@@ -11,6 +11,8 @@
     "lib": ["ESNext"],
     "sourceMap": true,
     "declaration": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
   },
   "include": ["src/**/*.ts"],
 }

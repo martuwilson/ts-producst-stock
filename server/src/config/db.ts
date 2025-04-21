@@ -1,13 +1,9 @@
-import {Sequelize} from 'sequelize'
+import {Sequelize} from 'sequelize-typescript'
 
 const db = new Sequelize(
-    process.env.DB_URL,
+    process.env.DB_URL!,
     {
-        dialectOptions: {
-            ssl: {
-                require: true,
-            }
-        },
+        models: [__dirname + '/../models/**/*.ts'],
     }
 )
 
