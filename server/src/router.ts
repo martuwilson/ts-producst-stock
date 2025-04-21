@@ -1,13 +1,13 @@
 import { Router } from "express";
-import { getProducts, createProduct } from "./handlers/product";
+import { getProducts, getProductById, createProduct } from "./handlers/product";
 import { body } from "express-validator";
-import { handleInputError } from "./middlewares";
+import { handleInputError, validateProductId } from "./middlewares";
 
 const router = Router();
 
 
 router.get("/", getProducts);
-
+router.get("/:id" , validateProductId, handleInputError, getProductById);
 
 router.post("/", 
     body("name").notEmpty().withMessage("Name cannot be empty"),
