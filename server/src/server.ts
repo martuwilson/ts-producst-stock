@@ -24,4 +24,10 @@ connectToDatabase();
 // Routing
 server.use('/api/products', productsRouter);
 
+server.get("/api", (req, res) => {
+    res.json({
+        message: "Welcome to the API",
+    });
+});
+
 export default server;
